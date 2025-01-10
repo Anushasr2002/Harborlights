@@ -250,6 +250,29 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
-    
+  <script>
+    window.digitalData = window.digitalData || {};
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const viewDetailButton = document.getElementById('view-details-btn');
+      if (viewDetailButton) {
+        const roomName = 'King Room';
+        const price = '120';
+        const currency = 'USD';
+
+        viewDetailButton.addEventListener('click', function(event) {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: 'view_details',
+            roomName: roomName,
+            price: price,
+            currency: currency
+          });
+
+          console.log('View Details event tracked:', roomName, price, currency);
+        });
+      }
+    });
+  </script>
   </body>
 </html>
