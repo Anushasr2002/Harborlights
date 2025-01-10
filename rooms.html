@@ -251,7 +251,7 @@
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
   <script>
-    window.digitalData = window.digitalData || {};
+    window.myDigitalData = window.myDigitalData || {};
 
     document.addEventListener('DOMContentLoaded', function() {
       const viewDetailButton = document.getElementById('view-details-btn');
@@ -261,8 +261,8 @@
         const currency = 'USD';
 
         viewDetailButton.addEventListener('click', function(event) {
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({
+          window.myDigitalData = window.myDigitalData || [];
+          window.myDigitalData.push({
             event: 'view_details',
             roomName: roomName,
             price: price,
