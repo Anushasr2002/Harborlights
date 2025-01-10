@@ -251,7 +251,7 @@
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
   <script>
-	  document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
   const viewDetailButton = document.getElementById('view-details-btn');
   let eventTracked = false; // Prevent multiple pushes for the same click event
 
@@ -260,7 +260,11 @@
     const price = '120';
     const currency = 'USD';
 
+    // Debug: Log button existence
+    console.log('View Details button found:', viewDetailButton);
+
     viewDetailButton.addEventListener('click', function(event) {
+      console.log('Button clicked'); // Debug: Check if the event fires
       if (!eventTracked) {
         // Push the event to the dataLayer
         window.dataLayer = window.dataLayer || [];
@@ -275,6 +279,8 @@
         eventTracked = true; // Prevent further tracking of this click
       }
     });
+  } else {
+    console.log('View Details button not found');
   }
 });
 
