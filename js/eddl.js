@@ -55,3 +55,31 @@ document.getElementById("signupForm").addEventListener("submit", function (event
   // Optionally, you can proceed with the form submission logic
   // event.target.submit();
 });
+
+// Ensure the DOM is fully loaded before attaching event listeners
+document.addEventListener('DOMContentLoaded', function() {
+  // Select the button using its ID
+  const viewDetailButton = document.getElementById('view-details-btn');
+
+  // Check if the button exists
+  if (viewDetailButton) {
+    // Room-specific information
+    const roomName = 'King Room';  // Replace with dynamic data if needed
+    const price = '120';           // Replace with dynamic data if needed
+    const currency = 'USD';        // Replace with dynamic data if needed
+
+    // Attach click event listener
+    viewDetailButton.addEventListener('click', function(event) {
+      // Push the event to the data layer
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'view_details',
+        roomName: roomName,
+        price: price,
+        currency: currency
+      });
+
+      console.log('View Details event tracked:', roomName, price, currency);
+    });
+  }
+});
