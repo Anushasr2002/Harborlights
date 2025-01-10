@@ -251,28 +251,36 @@
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
   <script>
-    window.digitalData = window.digitalData || {};
+    window.myDigitalData = window.myDigitalData || {};
 
-    document.addEventListener('DOMContentLoaded', function() {
-      const viewDetailButton = document.getElementById('view-details-btn');
-      if (viewDetailButton) {
-        const roomName = 'King Room';
-        const price = '120';
-        const currency = 'USD';
+// Function to track 'View Details' button click
+function trackViewDetailsClick(buttonId, roomName, price, currency, pageName) {
+  // Ensure the myDigitalData object has an events array
+  window.myDigitalData.events = window.myDigitalData.events || [];
 
-        viewDetailButton.addEventListener('click', function(event) {
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({
-            event: 'view_details',
-            roomName: roomName,
-            price: price,
-            currency: currency
-          });
+  // Push the event data into the events array
+  window.myDigitalData.events.push({
+    eventInfo: {
+      eventName: "viewDetails",
+      buttonId: buttonId,        // ID of the 'View Details' button clicked
+      roomName: roomName,        // Room name that was viewed
+      price: price,              // Price of the room
+      currency: currency,        // Currency of the price
+      pageName: pageName         // Page where the event occurred
+    }
+  });
 
-          console.log('View Details event tracked:', roomName, price, currency);
-        });
-      }
-    });
+  // Log to console for debugging
+  console.log("View Details event tracked:", { buttonId, roomName, price, currency, pageName });
+}
+
+// Example usage:
+
+// Add an event listener for the 'View Details' button click
+document.getElementById("view-details-btn").addEventListener("click", function () {
+  trackViewDetailsClick("view-details-btn", "King Room", "120", "USD", "Room Details Page");
+});
+
   </script>
   </body>
 </html>
