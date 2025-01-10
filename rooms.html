@@ -251,8 +251,7 @@
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
   <script>
-    // Initialize myDigitalData as an object if it's not already defined
-    window.myDigitalData = window.myDigitalData || {};
+    window.digitalData = window.digitalData || {};
 
     document.addEventListener('DOMContentLoaded', function() {
       const viewDetailButton = document.getElementById('view-details-btn');
@@ -262,19 +261,18 @@
         const currency = 'USD';
 
         viewDetailButton.addEventListener('click', function(event) {
-          // Add the event details to the myDigitalData object
-          window.myDigitalData.viewDetailsEvent = {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
             event: 'view_details',
             roomName: roomName,
             price: price,
             currency: currency
-          };
+          });
 
           console.log('View Details event tracked:', roomName, price, currency);
         });
       }
     });
-</script>
-
+  </script>
   </body>
 </html>
